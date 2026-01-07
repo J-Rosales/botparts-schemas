@@ -11,9 +11,7 @@
     "tags",
     "redistributeAllowed",
     "provenance",
-    "base",
-    "modules",
-    "transforms"
+    "x"
   ],
   "properties": {
     "slug": {
@@ -38,216 +36,22 @@
     "provenance": {
       "$ref": "#/$defs/Provenance"
     },
-    "base": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "fragments"
-      ],
-      "properties": {
-        "fragments": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "persona": {
-              "type": "string"
-            },
-            "scenario": {
-              "type": "string"
-            },
-            "system_prompt": {
-              "type": "string"
-            },
-            "greetings": {
-              "type": "string",
-              "description": "Path to greetings set JSON array."
-            },
-            "lore": {
-              "type": "string"
-            },
-            "examples": {
-              "type": "string"
-            },
-            "x": {
-              "$ref": "#/$defs/XExtensions"
-            }
-          }
-        },
-        "x": {
-          "$ref": "#/$defs/XExtensions"
-        }
-      }
+    "featured": {
+      "type": "boolean",
+      "default": false
     },
-    "modules": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "label",
-          "kind",
-          "target",
-          "op"
-        ],
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[a-z0-9_]+$"
-          },
-          "label": {
-            "type": "string",
-            "minLength": 1
-          },
-          "kind": {
-            "type": "string",
-            "enum": [
-              "required",
-              "toggle",
-              "oneOf"
-            ]
-          },
-          "group": {
-            "type": "string"
-          },
-          "defaultEnabled": {
-            "type": "boolean"
-          },
-          "target": {
-            "type": "string"
-          },
-          "op": {
-            "type": "string",
-            "enum": [
-              "replace",
-              "append",
-              "prepend",
-              "replaceSet",
-              "insertBefore",
-              "insertAfter"
-            ]
-          },
-          "valuePath": {
-            "type": "string"
-          },
-          "valueInline": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            ]
-          },
-          "conditions": {
-            "type": "object",
-            "additionalProperties": true
-          },
-          "x": {
-            "$ref": "#/$defs/XExtensions"
-          }
-        },
-        "allOf": [
-          {
-            "if": {
-              "properties": {
-                "kind": {
-                  "const": "oneOf"
-                }
-              }
-            },
-            "then": {
-              "required": [
-                "group"
-              ]
-            }
-          }
-        ]
-      }
+    "thumbnailPath": {
+      "type": "string"
     },
-    "transforms": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "label",
-          "renderer"
-        ],
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[a-z0-9_]+$"
-          },
-          "label": {
-            "type": "string",
-            "minLength": 1
-          },
-          "kind": {
-            "type": "string",
-            "enum": [
-              "presentation",
-              "content"
-            ],
-            "default": "presentation"
-          },
-          "renderer": {
-            "type": "string",
-            "enum": [
-              "spec_v2_json",
-              "text_pack",
-              "png_card"
-            ]
-          },
-          "templatePath": {
-            "type": "string"
-          },
-          "rules": {
-            "type": "object",
-            "additionalProperties": true
-          },
-          "x": {
-            "$ref": "#/$defs/XExtensions"
-          }
-        }
-      }
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    "defaults": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "selectedModules": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "transformId": {
-          "type": "string"
-        },
-        "outputSet": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "spec_v2_json",
-              "text_pack",
-              "png_card"
-            ]
-          }
-        },
-        "x": {
-          "$ref": "#/$defs/XExtensions"
-        }
-      }
+    "version": {
+      "type": "string"
     },
     "x": {
-      "$ref": "#/$defs/XExtensions"
+      "$ref": "#/$defs/ManifestExtensions"
     }
   },
   "$defs": {
@@ -315,6 +119,35 @@
         },
         "notes": {
           "type": "string"
+        }
+      }
+    },
+    "ManifestExtensions": {
+      "type": "object",
+      "description": "Extension escape hatch. Keys should be prefixed with 'x-' by convention.",
+      "additionalProperties": true,
+      "required": [
+        "proseVariants"
+      ],
+      "properties": {
+        "proseVariants": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "schema-like",
+              "hybrid"
+            ]
+          }
+        },
+        "variantSlugs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Slug"
+          }
         }
       }
     },

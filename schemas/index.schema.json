@@ -59,7 +59,7 @@
           },
           "dataPath": {
             "type": "string",
-            "description": "Relative path to per-character manifest.json (e.g., data/characters/<slug>/manifest.json)."
+            "description": "Relative path to per-character manifest.json (e.g., export/characters/<slug>/manifest.json)."
           },
           "redistributeAllowed": {
             "$ref": "#/$defs/RedistributeAllowed"
