@@ -19,4 +19,4 @@ The combined staging draft may include optional headers when relevant:
 - `## Notes`
 - `## Variant notes`
 
-`## Variant notes` supports nested variant groups and variant names to capture per-variant deltas for authoring.
+`## Variant notes` supports a flat list of variant names (as `###` headers) to capture per-variant deltas for authoring.

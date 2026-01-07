@@ -22,9 +22,8 @@ Variant notes are optional and describe deltas that should be applied to create 
 Structure:
 
 - `## Variant notes`
-  - `### Variant Group`
-    - `#### Variant Name`
-      - Freeform notes describing the delta from the base spec.
+  - `### Variant Name`
+    - Freeform notes describing the delta from the base spec.
 
 ## Template (skeleton)
 
@@ -43,8 +42,6 @@ Structure:
 
 ## Variant notes
 
-### Variant Group
-
-#### Variant Name
+### Variant Name
 
 ```
