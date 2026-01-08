@@ -6,14 +6,18 @@ Use this template when drafting combined schema inputs for the generator. It lis
 
 - `# Title`
 - `## Summary`
+- `## Display name`
 - `## Base spec`
 - `## Prompt manifest`
+- `## Elaborate prompt notes`
+- `## Draft edits (manual)`
+- `## Audit notes`
+- `## Variant notes`
 
 ## Optional headers
 
 - `## Attribution`
 - `## Notes`
-- `## Variant notes`
 
 ### Variant notes
 
@@ -25,6 +29,10 @@ Structure:
   - `### Variant Name`
     - Freeform notes describing the delta from the base spec.
 
+### Heading nesting rules
+
+The generator validation only permits H3 headings under `## Variant notes`. Any other nested structure should use bullet list items (including nested bullets under `## Variant notes` as needed).
+
 ## Template (skeleton)
 
 ```
@@ -32,9 +40,17 @@ Structure:
 
 ## Summary
 
+## Display name
+
 ## Base spec
 
 ## Prompt manifest
+
+## Elaborate prompt notes
+
+## Draft edits (manual)
+
+## Audit notes
 
 ## Attribution
 
