@@ -9,5 +9,3 @@ This flow describes the high-level order of operations during schema authoring.
 5. Mid-point confirmation (author review).
 6. Create variants using `## Variant notes` deltas.
 7. Final validation and publication.
-
-See `docs/schema-folder-input.md` for the markdown structure expected by `bp author schema-folder`.
