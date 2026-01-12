@@ -30,6 +30,8 @@
           "description",
           "tags",
           "dataPath",
+          "uploadDate",
+          "updatedAt",
           "redistributeAllowed",
           "provenance"
         ],
@@ -61,6 +63,9 @@
             "type": "string",
             "description": "Relative path to per-character manifest.json (e.g., export/characters/<slug>/manifest.json)."
           },
+          "uploadDate": {
+            "$ref": "#/$defs/DateOrEmpty"
+          },
           "redistributeAllowed": {
             "$ref": "#/$defs/RedistributeAllowed"
           },
@@ -68,8 +73,7 @@
             "$ref": "#/$defs/Provenance"
           },
           "updatedAt": {
-            "type": "string",
-            "format": "date-time"
+            "$ref": "#/$defs/DateOrEmpty"
           },
           "version": {
             "type": "string"
@@ -89,6 +93,19 @@
       "type": "string",
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
       "description": "URL-safe identifier. Lowercase letters, digits, hyphen."
+    },
+    "DateOrEmpty": {
+      "description": "Date-only ISO-8601 (YYYY-MM-DD) or empty string if unknown.",
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "string",
+          "const": ""
+        }
+      ]
     },
     "Url": {
       "type": "string",

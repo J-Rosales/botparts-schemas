@@ -9,6 +9,7 @@
     "name",
     "description",
     "tags",
+    "site",
     "redistributeAllowed",
     "provenance",
     "x"
@@ -43,9 +44,27 @@
     "thumbnailPath": {
       "type": "string"
     },
+    "site": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uploadDate",
+        "updatedAt"
+      ],
+      "properties": {
+        "uploadDate": {
+          "$ref": "#/$defs/DateOrEmpty"
+        },
+        "updatedAt": {
+          "$ref": "#/$defs/DateOrEmpty"
+        }
+      }
+    },
+    "uploadDate": {
+      "$ref": "#/$defs/DateOrEmpty"
+    },
     "updatedAt": {
-      "type": "string",
-      "format": "date-time"
+      "$ref": "#/$defs/DateOrEmpty"
     },
     "version": {
       "type": "string"
@@ -59,6 +78,19 @@
       "type": "string",
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
       "description": "URL-safe identifier. Lowercase letters, digits, hyphen."
+    },
+    "DateOrEmpty": {
+      "description": "Date-only ISO-8601 (YYYY-MM-DD) or empty string if unknown.",
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "string",
+          "const": ""
+        }
+      ]
     },
     "Url": {
       "type": "string",
@@ -142,6 +174,12 @@
               "hybrid"
             ]
           }
+        },
+        "uploadDate": {
+          "$ref": "#/$defs/DateOrEmpty"
+        },
+        "updatedAt": {
+          "$ref": "#/$defs/DateOrEmpty"
         },
         "variantSlugs": {
           "type": "array",
