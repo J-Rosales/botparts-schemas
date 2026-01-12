@@ -57,7 +57,8 @@
             "default": false
           },
           "thumbnailPath": {
-            "type": "string"
+            "type": "string",
+            "description": "Relative path to the canonical avatar image (data/characters/<slug>/avatarImage.png)."
           },
           "dataPath": {
             "type": "string",
